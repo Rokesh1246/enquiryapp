@@ -1,0 +1,24 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import '../constants/app_button.dart';
+import '../constants/app_colors.dart';
+import '../constants/app_text_styles.dart';
+import '../constants/text_fields.dart';
+
+Widget buildServiceForm(BuildContext context) {
+  final nameController = TextEditingController();
+  final mobileController = TextEditingController();
+  final detailsController = TextEditingController();
+  final descriptionController = TextEditingController();
+  final followUpDateController = TextEditingController();
+  final serviceController = TextEditingController();
+
+  DateTime? selectedDate;
+  bool needQuotation = false;
+  bool isSubmitting = false;
+
+  Future<void> selectDate(StateSetter setState) async {
+    final picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
